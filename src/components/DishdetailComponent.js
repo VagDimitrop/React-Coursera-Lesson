@@ -3,8 +3,11 @@ import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle} from 'reac
 
 
 function renderDish(dish) {
+
   if (dish != null) {
+
     return(
+      <div className="row col-12 col-md-5 m-1">
       <Card>
         <CardImg width="100%" object src={dish.image} alt={dish.name} />
         <CardBody>
@@ -12,6 +15,7 @@ function renderDish(dish) {
             <CardText>{dish.description}</CardText>
         </CardBody>
       </Card>
+      </div>
     );
   }
   else {
