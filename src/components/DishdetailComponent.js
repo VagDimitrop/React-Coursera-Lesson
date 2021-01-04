@@ -1,11 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle} from 'reactstrap';
 
-
-class DishDetail extends React.Component {
-
-
-  renderDish(dish) {
+  function RenderDish({dish}) {
 
       if (dish != null) {
 
@@ -28,17 +24,19 @@ class DishDetail extends React.Component {
       }
     }
 
-    renderComments(dish) {
+    function RenderComments({dish}) {
 
       if (dish != null) {
 
         const list = dish.comments.map((comment)=> {
           return(
-            <li key={comment.id} >
-                <p>{comment.comment}</p>
-                <p>--{comment.author},
-                {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</p>
-            </li>
+            <ul className="list-unstyled">
+              <li key={comment.id} >
+                  <p>{comment.comment}</p>
+                  <p>--{comment.author},
+                  {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</p>
+              </li>
+            </ul>
           )
         })
 
@@ -58,17 +56,15 @@ class DishDetail extends React.Component {
       }
     }
 
-    render() {
-      const { dish } = this.props;
-      if (dish != null) {
+    const DishDetail = (props) => {
+
+      if (props.dish != null) {
         return(
           <div className="container">
-            <div className="row">
-              {this.renderDish(dish)}
-                <ul className="list-unstyled">
-                  {this.renderComments(dish)}
-                </ul>
-            </div>
+          <div className="row">
+            <RenderDish dish = {props.dish} />
+            <RenderComments dish = {props.dish} />
+          </div>
           </div>
         );
       } else {
@@ -77,6 +73,5 @@ class DishDetail extends React.Component {
         );
       }
     }
-  }
 
 export default DishDetail;
