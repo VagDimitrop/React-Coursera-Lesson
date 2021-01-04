@@ -10,7 +10,7 @@ class DishDetail extends React.Component {
       if (dish != null) {
 
         return(
-            <div className="row col-12 col-md-5 m-1">
+            <div className="col-12 col-md-5 m-1">
             <Card>
               <CardImg width="100%" object src={dish.image} alt={dish.name} />
               <CardBody>
@@ -43,7 +43,7 @@ class DishDetail extends React.Component {
         })
 
         return(
-            <div className="row col-12 col-md-5 m-1">
+            <div className="col-12 col-md-5 m-1">
             <h4>Comments</h4>
             <ul className="list-unstyled">
               {list}
@@ -62,11 +62,13 @@ class DishDetail extends React.Component {
       const { dish } = this.props;
       if (dish != null) {
         return(
-          <div className="row">
-            {this.renderDish(dish)}
-              <ul className="list-unstyled">
-                {this.renderComments(dish)}
-              </ul>
+          <div className="container">
+            <div className="row">
+              {this.renderDish(dish)}
+                <ul className="list-unstyled">
+                  {this.renderComments(dish)}
+                </ul>
+            </div>
           </div>
         );
       } else {
